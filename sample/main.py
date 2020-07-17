@@ -1,5 +1,5 @@
-import uvicorn
+from logging.config import dictConfig
+from log_config import dict_config
 from sample.app import app
 
-if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+dictConfig(dict_config.sample_logger)
