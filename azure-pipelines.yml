@@ -1,14 +1,30 @@
 trigger:
-- master
+  - master
 
 pool:
   vmImage: 'ubuntu-latest'
-steps:
-- task: Docker@2
-  inputs:
-    command: 'build'
-    Dockerfile: '**/Dockerfile'
-    arguments: '-t fast-api:$(Build.BuildId)'
-- script: |
-    docker run fast-api:$(Build.BuildId) python -m pytest
-  displayName: 'Run PyTest'
+stages:
+  - stage: 'Python_Native'
+    jobs:
+      - job: 'FastAPI_PyTest'
+        strategy:
+          matrix:
+            Python36:
+              python.version: '3.6'
+            Python37:
+              python.version: '3.7'
+            Python38:
+              python.version: '3.8'
+        steps:
+          - task: UsePythonVersion@0
+            displayName: 'Use Python $(python.version)'
+            inputs:
+              versionSpec: '$(python.version)'
+          - script: |
+              python -m pip install --upgrade pip
+              pip install -r requirements.txt
+            displayName: 'Install dependencies in Python $(python.version)'
+          - script: |
+              pip install pytest pytest-azurepipelines
+              python -m pytest
+            displayName: 'Run Tests using Python $(python.version)'
