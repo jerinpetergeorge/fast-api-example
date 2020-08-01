@@ -1,8 +1,7 @@
 from fastapi.testclient import TestClient
+from application import demo_app
 
-from sample.app import app
-
-client = TestClient(app)
+client = TestClient(demo_app)
 
 
 def test_read_main():
