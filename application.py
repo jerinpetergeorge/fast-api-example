@@ -10,7 +10,7 @@ demo_app = FastAPI()
 http_bin_prefix = '/http-bin'
 
 
-@demo_app.get(path='/foo/bar/', include_in_schema=False)
+@demo_app.get(path='/', include_in_schema=False)
 def root_api(request: Request):
     requested_domain = str(request.base_url)[:-1]
     url_list = [{'path': f'{requested_domain}{route.path}', 'name': route.name} for route in demo_app.routes]
