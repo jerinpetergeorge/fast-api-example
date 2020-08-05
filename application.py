@@ -1,9 +1,10 @@
 from logging.config import dictConfig
+
 from fastapi import FastAPI, Request
 
-from log_config.dict_config import log_config
 from demo.tutorial import hello_world
 from http_bin import methods as http_bin_methods
+from log_config.dict_config import log_config
 
 dictConfig(log_config)
 demo_app = FastAPI()

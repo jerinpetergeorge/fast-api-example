@@ -1,6 +1,8 @@
 from fastapi import APIRouter, Request
-from .parser import request_parser
+
 from http_bin.utils.typing import JsonBody
+
+from .parser import request_parser
 
 router = APIRouter()
 
