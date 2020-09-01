@@ -1,3 +1,3 @@
-from typing import Any, Dict
+from typing import Any, Dict, AnyStr
 
-JsonBody = Dict[Any, Any]
+JSONBody = Dict[AnyStr, Any]
