@@ -1,6 +1,10 @@
 import uvicorn
 
-from application import demo_app
-
 if __name__ == "__main__":
-    uvicorn.run(demo_app, host="0.0.0.0", port=6022)
+    uvicorn.run(
+        "application:app",  # or import app instance here
+        host="0.0.0.0",
+        port=6022,
+        reload=True,
+        debug=True
+    )

@@ -7,16 +7,16 @@ from http_bin import methods as http_bin_methods
 from log_config.dict_config import log_config
 
 dictConfig(log_config)
-demo_app = FastAPI()
+app = FastAPI()
 http_bin_prefix = '/http-bin'
 
 
-@demo_app.get(path='/', include_in_schema=False)
+@app.get(path='/', include_in_schema=False)
 def root_api(request: Request):
     requested_domain = str(request.base_url)[:-1]
-    url_list = [{'path': f'{requested_domain}{route.path}', 'name': route.name} for route in demo_app.routes]
+    url_list = [{'path': f'{requested_domain}{route.path}', 'name': route.name} for route in app.routes]
     return {'message': 'All possible URLs in this application', 'result': url_list}
 
 
-demo_app.include_router(hello_world.router, prefix='/demo/hello')
-demo_app.include_router(http_bin_methods.router, prefix=http_bin_prefix)
+app.include_router(hello_world.router, prefix='/demo/hello')
+app.include_router(http_bin_methods.router, prefix=http_bin_prefix)
