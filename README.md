@@ -16,7 +16,7 @@ gunicorn -k uvicorn.workers.UvicornWorker -b 0.0.0.0:6022 application:demo_app
 4.
 ```commandline
 docker build . -t fast-api-example
-docker run -p 6022:6022 fast-api-example gunicorn -k uvicorn.workers.UvicornWorker -b 0.0.0.0:6022 application:demo_app
+docker run -p 6022:6022 fast-api-example gunicorn -k uvicorn.workers.UvicornWorker -b 0.0.0.0:6022 application:app
 ```
 
 ###  Run the tests

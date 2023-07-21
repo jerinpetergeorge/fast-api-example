@@ -1,0 +1,11 @@
+services:
+  fast-api-example:
+    image: fast-api-example
+    ports:
+      - "6022:6022"
+#    volumes:
+#      - /var/log:/var:log
+    build:
+      context: .
+#      dockerfile: Dockerfile
+    command: gunicorn -k uvicorn.workers.UvicornWorker -b 0.0.0.0:6022 application:app
