@@ -3,7 +3,7 @@ from fastapi import APIRouter
 
 router = APIRouter()
 
-empty_logger = logging.getLogger("")
+empty_logger = logging.getLogger("myapp")
 
 
 @router.get("/")
